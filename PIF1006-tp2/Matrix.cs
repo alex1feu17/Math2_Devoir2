@@ -21,6 +21,22 @@ namespace PIF1006_tp2
 
         public Matrix2D Transpose()
         {
+            int w = Matrix.GetLength(0);
+            int h = Matrix.GetLength(1);
+
+            double[,] result = new double[h, w];
+
+            for (int i = 0; i < w; i++)
+            {
+                for (int j = 0; j < h; j++)
+                {
+                    result[j, i] = Matrix[i, j];
+                }
+            }
+
+            Matrix2D TransMatrix2D = new Matrix2D("T", result.GetLength(0), result.GetLength(1));
+
+            return TransMatrix2D;
             // À compléter (0.25 pt)
             // Doit retourner une matrice qui est la transposée de celle de l'objet
         }
