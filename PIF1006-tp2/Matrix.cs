@@ -29,6 +29,7 @@ namespace PIF1006_tp2
         {
             // À compléter (0.25 pt)
             // Doit retourner vrai si la matrice est une matrice carrée, sinon faux
+            return Matrix.GetLength(0) == Matrix.GetLength(1);
         }
 
         public double Determinant()
