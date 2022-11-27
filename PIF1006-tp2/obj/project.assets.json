@@ -8,24 +8,19 @@
     "net5.0": []
   },
   "packageFolders": {
-    "C:\\Users\\alexy\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\gabri\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\alexy\\Source\\Repos\\Math2_Devoir2\\PIF1006-tp2\\PIF1006-tp2.csproj",
+      "projectUniqueName": "D:\\Users\\gabri\\Documents\\Cours\\UQTR\\A22\\PIF1006\\TP2\\Math2_Devoir2\\PIF1006-tp2\\PIF1006-tp2.csproj",
       "projectName": "PIF1006-tp2",
-      "projectPath": "C:\\Users\\alexy\\Source\\Repos\\Math2_Devoir2\\PIF1006-tp2\\PIF1006-tp2.csproj",
-      "packagesPath": "C:\\Users\\alexy\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\alexy\\Source\\Repos\\Math2_Devoir2\\PIF1006-tp2\\obj\\",
+      "projectPath": "D:\\Users\\gabri\\Documents\\Cours\\UQTR\\A22\\PIF1006\\TP2\\Math2_Devoir2\\PIF1006-tp2\\PIF1006-tp2.csproj",
+      "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
+      "outputPath": "D:\\Users\\gabri\\Documents\\Cours\\UQTR\\A22\\PIF1006\\TP2\\Math2_Devoir2\\PIF1006-tp2\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\alexy\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
