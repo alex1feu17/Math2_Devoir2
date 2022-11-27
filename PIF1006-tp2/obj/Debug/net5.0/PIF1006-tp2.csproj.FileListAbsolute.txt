@@ -3,3 +3,14 @@ D:\Users\gabri\Documents\Cours\UQTR\A22\PIF1006\TP2\Math2_Devoir2\PIF1006-tp2\ob
 D:\Users\gabri\Documents\Cours\UQTR\A22\PIF1006\TP2\Math2_Devoir2\PIF1006-tp2\obj\Debug\net5.0\PIF1006-tp2.AssemblyInfoInputs.cache
 D:\Users\gabri\Documents\Cours\UQTR\A22\PIF1006\TP2\Math2_Devoir2\PIF1006-tp2\obj\Debug\net5.0\PIF1006-tp2.AssemblyInfo.cs
 D:\Users\gabri\Documents\Cours\UQTR\A22\PIF1006\TP2\Math2_Devoir2\PIF1006-tp2\obj\Debug\net5.0\PIF1006-tp2.csproj.CoreCompileInputs.cache
+D:\Users\gabri\Documents\Cours\UQTR\A22\PIF1006\TP2\Math2_Devoir2\PIF1006-tp2\bin\Debug\net5.0\PIF1006-tp2.exe
+D:\Users\gabri\Documents\Cours\UQTR\A22\PIF1006\TP2\Math2_Devoir2\PIF1006-tp2\bin\Debug\net5.0\PIF1006-tp2.deps.json
+D:\Users\gabri\Documents\Cours\UQTR\A22\PIF1006\TP2\Math2_Devoir2\PIF1006-tp2\bin\Debug\net5.0\PIF1006-tp2.runtimeconfig.json
+D:\Users\gabri\Documents\Cours\UQTR\A22\PIF1006\TP2\Math2_Devoir2\PIF1006-tp2\bin\Debug\net5.0\PIF1006-tp2.runtimeconfig.dev.json
+D:\Users\gabri\Documents\Cours\UQTR\A22\PIF1006\TP2\Math2_Devoir2\PIF1006-tp2\bin\Debug\net5.0\PIF1006-tp2.dll
+D:\Users\gabri\Documents\Cours\UQTR\A22\PIF1006\TP2\Math2_Devoir2\PIF1006-tp2\bin\Debug\net5.0\PIF1006-tp2.pdb
+D:\Users\gabri\Documents\Cours\UQTR\A22\PIF1006\TP2\Math2_Devoir2\PIF1006-tp2\obj\Debug\net5.0\PIF1006-tp2.dll
+D:\Users\gabri\Documents\Cours\UQTR\A22\PIF1006\TP2\Math2_Devoir2\PIF1006-tp2\obj\Debug\net5.0\refint\PIF1006-tp2.dll
+D:\Users\gabri\Documents\Cours\UQTR\A22\PIF1006\TP2\Math2_Devoir2\PIF1006-tp2\obj\Debug\net5.0\PIF1006-tp2.pdb
+D:\Users\gabri\Documents\Cours\UQTR\A22\PIF1006\TP2\Math2_Devoir2\PIF1006-tp2\obj\Debug\net5.0\PIF1006-tp2.genruntimeconfig.cache
+D:\Users\gabri\Documents\Cours\UQTR\A22\PIF1006\TP2\Math2_Devoir2\PIF1006-tp2\obj\Debug\net5.0\ref\PIF1006-tp2.dll

@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Common;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +10,7 @@ namespace PIF1006_tp2
 {
     public class Matrix2D
     {
-        public double[,] Matrix { get; private set; }
+        public double[,] Matrix { get; set; }
         public string Name { get; private set; }
 
         public Matrix2D(string name, int lines, int columns)
@@ -53,6 +55,35 @@ namespace PIF1006_tp2
             // À compléter (2 pts)
             // Aura sans doute des méthodes suppl. privée à ajouter,
             // notamment de nature récursive. La matrice doit être carrée de prime à bord.
+            if(Matrix.GetLength(1) == 2)
+            {
+                return (Matrix[0, 0] * Matrix[1, 1]) - (Matrix[0, 1] * Matrix[1, 0]);
+            } else
+            {
+                double result = 0;
+                for(int c = 0; c < Matrix.GetLength(1); c++)
+                    result += (Matrix[0, c] * (Exclude(c).Determinant() * (c % 2 == 0 ? 1 : -1)));
+                return result;
+            }
+
+        }
+
+        private Matrix2D Exclude(int column)
+        {
+            Matrix2D m = new Matrix2D("D", Matrix.GetLength(0) - 1, Matrix.GetLength(1) - 1);
+            for(int l = 1; l < Matrix.GetLength(0); l++)
+            {
+                int col = 0;
+                for (int c = 0; c < Matrix.GetLength(1); c++)
+                {
+                    if (c != column)
+                    {
+                        m.Matrix[l - 1, col] = Matrix[l, c];
+                        col++;
+                    }
+                }
+            }
+            return m;
         }
 
         public Matrix2D Comatrix()
