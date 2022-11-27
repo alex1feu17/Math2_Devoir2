@@ -14,7 +14,7 @@ namespace PIF1006_tp2
         public System(Matrix2D a, Matrix2D b)
         {
             // Doit rester tel quel
-
+            // ss
             A = a;
             B = b;
         }
