@@ -70,6 +70,37 @@ namespace PIF1006_tp2
              * Après chaque option on revient au menu utilisateur, sauf pour quitter bien évidemment.
              * 
              */
+            Console.Clear();
+            Console.WriteLine("Choose an option:");
+            Console.WriteLine("1) Charger un fichier de système");
+            Console.WriteLine("2) Afficher le système");
+            Console.WriteLine("3) Résoudre avec Cramer");
+            Console.WriteLine("4) Résoudre avec la méthode de la matrice inverse");
+            Console.WriteLine("5) Résoudre avec Gauss");
+            Console.WriteLine("6) Résoudre");
+            Console.WriteLine("7) Exit");
+            Console.Write("\r\nSelect an option: ");
+
+            switch (Console.ReadLine())
+            {
+                case "1":
+               
+                case "2":
+                  
+                case "3":
+
+                case "4":
+
+                case "5":
+
+                case "6":
+
+                case "7":
+                    break;
+
+                default:
+                    break;
+            }
         }
     }
 }

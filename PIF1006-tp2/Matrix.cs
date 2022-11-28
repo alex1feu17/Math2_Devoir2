@@ -97,9 +97,9 @@ namespace PIF1006_tp2
             {
                 for (int j = 0; j < comatrice.Matrix.GetLength(1); j++)
                 {
-                    /* result = this.SousMatrice(i, j);
-                    if ((i + j) % 2 == 0) { comatrice[i, j] = result.Determinant; }
-                    else { comatrice[i, j] = -1 result.Determinant; }*/
+                    result = this.SousMatrice(i, j);
+                    if ((i + j) % 2 == 0) { comatrice.Matrix[i, j] = result.Determinant(); }
+                    else { comatrice.Matrix[i, j] = -1 * result.Determinant(); }
                 }
             }
 
@@ -114,9 +114,28 @@ namespace PIF1006_tp2
             double det = Determinant();
             Matrix2D t_Comatrice = Comatrix();
             t_Comatrice = t_Comatrice.Transpose();
-            //Matrix2D Inverse = new Matrix2D(,);
-            //Inverse = t_Comatrice (1 / det);
-            // return Inverse;
+
+            Matrix2D Inverse = new Matrix2D("I", Matrix.GetLength(0), Matrix.GetLength(1));
+            //Inverse = t_Comatrice.Matrix * (1 / det);
+            return Inverse;
+        }
+        public Matrix2D SousMatrice(int ib, int jb)
+        {
+            Matrix2D B = new Matrix2D("S",Matrix.GetLength(0) - 1, Matrix.GetLength(1) - 1);
+            int ir = 0, jr = 0;
+            for (int i = 0; i < B.Matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < B.Matrix.GetLength(1); j++)
+                {
+                    if (i != (ib) && j != (jb))
+                    {
+                        B.Matrix[ir, jr] = Matrix[i, j];
+                        if (jr < B.Matrix.GetLength(0) - 1) jr++;
+                        else { jr = 0; ir++; }
+                    }
+                }
+            }
+            return B;
         }
 
         public override string ToString()
