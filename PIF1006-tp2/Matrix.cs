@@ -90,6 +90,20 @@ namespace PIF1006_tp2
         {
             // À compléter (1 pt)
             // Doit retourner une matrice qui est la comatrice de celle de l'objet
+            Matrix2D comatrice = new Matrix2D("C", Matrix.GetLength(0), Matrix.GetLength(1));
+            Matrix2D result;
+
+            for (int i = 0; i < comatrice.Matrix.GetLength(0); i++)
+            {
+                for (int j = 0; j < comatrice.Matrix.GetLength(1); j++)
+                {
+                    /* result = this.SousMatrice(i, j);
+                    if ((i + j) % 2 == 0) { comatrice[i, j] = result.Determinant; }
+                    else { comatrice[i, j] = -1 result.Determinant; }*/
+                }
+            }
+
+            return comatrice;
         }
 
         public Matrix2D Inverse()
@@ -97,6 +111,12 @@ namespace PIF1006_tp2
             // À compléter (0.25 pt)
             // Doit retourner une matrice qui est l'inverse de celle de l'objet;
             // Si le déterminant est nul ou la matrice non carrée, on retourne null.
+            double det = Determinant();
+            Matrix2D t_Comatrice = Comatrix();
+            t_Comatrice = t_Comatrice.Transpose();
+            //Matrix2D Inverse = new Matrix2D(,);
+            //Inverse = t_Comatrice (1 / det);
+            // return Inverse;
         }
 
         public override string ToString()
