@@ -119,6 +119,7 @@ namespace PIF1006_tp2
             //Inverse = t_Comatrice.Matrix * (1 / det);
             return Inverse;
         }
+
         public Matrix2D SousMatrice(int ib, int jb)
         {
             Matrix2D B = new Matrix2D("S",Matrix.GetLength(0) - 1, Matrix.GetLength(1) - 1);
@@ -136,6 +137,15 @@ namespace PIF1006_tp2
                 }
             }
             return B;
+        }
+
+        public Matrix2D Clone()
+        {
+            Matrix2D result = new Matrix2D(Name, Matrix.GetLength(0), Matrix.GetLength(1));
+            for (int l = 0; l < Matrix.GetLength(0); l++)
+                for (int c = 0; c < Matrix.GetLength(1); c++)
+                    result.Matrix[l, c] = Matrix[l, c];
+            return result;
         }
 
         public override string ToString()
