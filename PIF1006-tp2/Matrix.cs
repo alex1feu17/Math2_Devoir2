@@ -10,7 +10,7 @@ namespace PIF1006_tp2
 {
     public class Matrix2D
     {
-        public double[,] Matrix { get; set; }
+        public double[,] Matrix { get; private set; }
         public string Name { get; private set; }
 
         public Matrix2D(string name, int lines, int columns)
@@ -21,8 +21,16 @@ namespace PIF1006_tp2
             Name = name;
         }
 
+        public Matrix2D Set(int line, int column, int value)
+        {
+            Matrix[line, column] = value;
+            return this;
+        }
+
         public Matrix2D Transpose()
         {
+            // À compléter (0.25 pt)
+            // Doit retourner une matrice qui est la transposée de celle de l'objet
             int w = Matrix.GetLength(0);
             int h = Matrix.GetLength(1);
 
@@ -39,8 +47,6 @@ namespace PIF1006_tp2
             Matrix2D TransMatrix2D = new Matrix2D("T", result.GetLength(0), result.GetLength(1));
 
             return TransMatrix2D;
-            // À compléter (0.25 pt)
-            // Doit retourner une matrice qui est la transposée de celle de l'objet
         }
 
         public bool IsSquare()
@@ -145,6 +151,13 @@ namespace PIF1006_tp2
             for (int l = 0; l < Matrix.GetLength(0); l++)
                 for (int c = 0; c < Matrix.GetLength(1); c++)
                     result.Matrix[l, c] = Matrix[l, c];
+            return result;
+        }
+
+        public Matrix2D WithName(String name)
+        {
+            Matrix2D result = Clone();
+            result.Name = name;
             return result;
         }
 

@@ -57,7 +57,7 @@ namespace PIF1006_tp2
             // À compléter (1 pts)
             // Doit retourner une matrice X de même dimension que B avec les valeurs des inconnus 
             Matrix2D A1 = A.Clone();
-            Matrix2D B1 = B.Clone();
+            Matrix2D B1 = B.WithName("Gauss");
             for (int i = 0; i < A1.Matrix.GetLength(0); i++)
             {
                 for (int l = 0; l < A1.Matrix.GetLength(0); l++)

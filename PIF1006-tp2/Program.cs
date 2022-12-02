@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
 
 namespace PIF1006_tp2
 {
@@ -14,27 +17,6 @@ namespace PIF1006_tp2
     {
         static void Main(string[] args)
         {
-            //---- exemple --- à ne pas utiliser dans votre remise
-
-            // On peut créer une matrice comme ceci:
-            Matrix2D matrixA = new Matrix2D("A", 3, 3);
-            Matrix2D matrixB = new Matrix2D("B", 3, 1);
-
-            // Et on devrait pouvoir construire un système typiquement commec:
-            System system = new System(matrixA, matrixB);
-
-            // Puis résoudre selon différentes méthodes:
-            Matrix2D matrixX;
-            matrixX = system.SolveUsingCramer();
-            matrixX = system.SolveUsingGauss();
-            matrixX = system.SolveUsingInverseMatrix();
-
-
-            // Vous pouvez vous injecter un exemple de système si vous le souhaitez pour vous aider,
-            // mais ultimement tout comme au TP1 vous devrez avoir une méthode pour charger un fichier
-
-            //-------- fin exemple ---------
-
             // À compléter: 2 pts (0.5 menu / 1.5 chargement)
             /* Vous devez avoir un menu utilisateur avec l'arboresence de menus suivants:
              * 1) Charger un fichier de système -> doit être un fichier structuré ou semi structurée qui décrit
@@ -70,34 +52,111 @@ namespace PIF1006_tp2
              * Après chaque option on revient au menu utilisateur, sauf pour quitter bien évidemment.
              * 
              */
-            Console.Clear();
-            Console.WriteLine("Choose an option:");
-            Console.WriteLine("1) Charger un fichier de système");
-            Console.WriteLine("2) Afficher le système");
-            Console.WriteLine("3) Résoudre avec Cramer");
-            Console.WriteLine("4) Résoudre avec la méthode de la matrice inverse");
-            Console.WriteLine("5) Résoudre avec Gauss");
-            Console.WriteLine("6) Exit");
-            Console.Write("\r\nSelect an option: ");
 
-            switch (Console.ReadLine())
+            System system = new System(new Matrix2D("A", 3, 3), new Matrix2D("A", 3, 1));
+            try
             {
-                case "1":
-               
-                case "2":
-                  
-                case "3":
-
-                case "4":
-
-                case "5":
-
-                case "6":
-                    break;
-
-                default:
-                    break;
+                Tuple<Matrix2D, Matrix2D> matrixes = LoadMatrixesFromFile("default.txt");
+                system = new System(matrixes.Item1, matrixes.Item2);
             }
+            catch (Exception)
+            {
+            }
+
+            string option;
+
+            do
+            {
+                Console.Clear();
+                Console.WriteLine("1) Charger un fichier de système");
+                Console.WriteLine("2) Afficher le système");
+                Console.WriteLine("3) Résoudre avec Cramer");
+                Console.WriteLine("4) Résoudre avec la méthode de la matrice inverse");
+                Console.WriteLine("5) Résoudre avec Gauss");
+                Console.WriteLine("6) Exit");
+                Console.Write("\nSelectionnez une option: ");
+
+                switch (option = Console.ReadLine())
+                {
+                    case "1":
+                        Console.Write("Entrez le nom du fichier: ");
+                        try
+                        {
+                            Tuple<Matrix2D, Matrix2D>  matrixes = LoadMatrixesFromFile(Console.ReadLine());
+                            system = new System(matrixes.Item1, matrixes.Item2);
+                            Console.WriteLine("Système chargé:");
+                            Console.Write(system);
+                        } catch (Exception e)
+                        {
+                            Console.WriteLine(e.Message);
+                        }
+                        break;
+                    case "2":
+                        Console.WriteLine("Système:");
+                        Console.Write(system);
+                        break;
+                    case "3":
+                        if (system.IsValid()) Console.Write(system.SolveUsingCramer());
+                        else Console.WriteLine("Système invalide.");
+                        break;
+                    case "4":
+                        if (system.IsValid()) Console.Write(system.SolveUsingInverseMatrix());
+                        else Console.WriteLine("Système invalide.");
+                        break;
+                    case "5":
+                        if (system.IsValid()) Console.Write(system.SolveUsingGauss());
+                        else Console.WriteLine("Système invalide.");
+                        break;
+                    default:
+                        break;
+                }
+
+                if (!option.Equals("6"))
+                {
+                    Console.WriteLine("\nAppuyez sur une touche pour continuer...");
+                    Console.ReadLine();
+                }
+            } while (option != "6");
+        }
+
+        static Tuple<Matrix2D, Matrix2D> LoadMatrixesFromFile(string filePath)
+        {
+            if (!File.Exists(filePath)) throw new Exception("Fichier introuvable.");
+
+            string[] lines = File.ReadAllLines(filePath);
+
+            if(lines.Length < 2)
+                throw new Exception("Fichier invalide.");
+
+            Matrix2D a = LoadMatrix("A", lines.Take(lines.Length / 2).ToArray());
+            if(!a.IsSquare()) new Exception("Fichier invalide.");
+            Matrix2D b = LoadMatrix("B", lines.Skip(lines.Length / 2).Take(lines.Length / 2).ToArray());
+            if(b.Matrix.GetLength(1) != 1) new Exception("Fichier invalide.");
+            return new Tuple<Matrix2D, Matrix2D>(a, b);
+        }
+
+        static Matrix2D LoadMatrix(string name, string[] lines)
+        {
+            if(lines.Length == 0) throw new Exception("Fichier invalide.");
+
+            int columns = lines[0].Split(' ').Length;
+
+            Matrix2D matrix = new Matrix2D(name, lines.Length, columns);
+            for (int l = 0; l < lines.Length; l++)
+            {
+                String[] column = lines[l].Split(' ');
+                if (column.Length != columns) throw new Exception("Fichier invalide.");
+                try
+                {
+                    for (int col = 0; col < column.Length; col++)
+                        matrix.Set(l, col, int.Parse(column[col]));
+                } catch (Exception e)
+                {
+                    throw new Exception("Fichier invalide.");
+                }
+            }
+
+            return matrix;
         }
     }
 }
