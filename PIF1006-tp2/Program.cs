@@ -77,8 +77,7 @@ namespace PIF1006_tp2
             Console.WriteLine("3) Résoudre avec Cramer");
             Console.WriteLine("4) Résoudre avec la méthode de la matrice inverse");
             Console.WriteLine("5) Résoudre avec Gauss");
-            Console.WriteLine("6) Résoudre");
-            Console.WriteLine("7) Exit");
+            Console.WriteLine("6) Exit");
             Console.Write("\r\nSelect an option: ");
 
             switch (Console.ReadLine())
@@ -94,8 +93,6 @@ namespace PIF1006_tp2
                 case "5":
 
                 case "6":
-
-                case "7":
                     break;
 
                 default:
