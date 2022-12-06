@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Users\\gabri\\Documents\\Cours\\UQTR\\A22\\PIF1006\\TP2\\Math2_Devoir2\\PIF1006-tp2\\PIF1006-tp2.csproj": {}
+    "C:\\Users\\gabriel.deschesnes\\Desktop\\Math\\Math2_Devoir2\\PIF1006-tp2\\PIF1006-tp2.csproj": {}
   },
   "projects": {
-    "D:\\Users\\gabri\\Documents\\Cours\\UQTR\\A22\\PIF1006\\TP2\\Math2_Devoir2\\PIF1006-tp2\\PIF1006-tp2.csproj": {
+    "C:\\Users\\gabriel.deschesnes\\Desktop\\Math\\Math2_Devoir2\\PIF1006-tp2\\PIF1006-tp2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Users\\gabri\\Documents\\Cours\\UQTR\\A22\\PIF1006\\TP2\\Math2_Devoir2\\PIF1006-tp2\\PIF1006-tp2.csproj",
+        "projectUniqueName": "C:\\Users\\gabriel.deschesnes\\Desktop\\Math\\Math2_Devoir2\\PIF1006-tp2\\PIF1006-tp2.csproj",
         "projectName": "PIF1006-tp2",
-        "projectPath": "D:\\Users\\gabri\\Documents\\Cours\\UQTR\\A22\\PIF1006\\TP2\\Math2_Devoir2\\PIF1006-tp2\\PIF1006-tp2.csproj",
-        "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
-        "outputPath": "D:\\Users\\gabri\\Documents\\Cours\\UQTR\\A22\\PIF1006\\TP2\\Math2_Devoir2\\PIF1006-tp2\\obj\\",
+        "projectPath": "C:\\Users\\gabriel.deschesnes\\Desktop\\Math\\Math2_Devoir2\\PIF1006-tp2\\PIF1006-tp2.csproj",
+        "packagesPath": "C:\\Users\\gabriel.deschesnes\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gabriel.deschesnes\\Desktop\\Math\\Math2_Devoir2\\PIF1006-tp2\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\gabriel.deschesnes\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,7 +22,8 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "https://api.nuget.org/v3/index.json": {}
+          "https://api.nuget.org/v3/index.json": {},
+          "https://proget.icosolutions.com/nuget/iconuget/v3/index.json": {}
         },
         "frameworks": {
           "net5.0": {
@@ -45,8 +46,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -55,7 +55,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.301\\RuntimeIdentifierGraph.json"
         }
       }
     }

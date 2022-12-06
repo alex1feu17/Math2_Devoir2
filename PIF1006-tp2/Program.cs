@@ -52,7 +52,6 @@ namespace PIF1006_tp2
              * Après chaque option on revient au menu utilisateur, sauf pour quitter bien évidemment.
              * 
              */
-
             System system = new System(new Matrix2D("A", 3, 3), new Matrix2D("A", 3, 1));
             try
             {
@@ -64,7 +63,6 @@ namespace PIF1006_tp2
             }
 
             string option;
-
             do
             {
                 Console.Clear();

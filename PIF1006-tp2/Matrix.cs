@@ -31,22 +31,12 @@ namespace PIF1006_tp2
         {
             // À compléter (0.25 pt)
             // Doit retourner une matrice qui est la transposée de celle de l'objet
-            int w = Matrix.GetLength(0);
-            int h = Matrix.GetLength(1);
+            Matrix2D result = new Matrix2D(Name, Matrix.GetLength(1), Matrix.GetLength(0));
 
-            double[,] result = new double[h, w];
-
-            for (int i = 0; i < w; i++)
-            {
-                for (int j = 0; j < h; j++)
-                {
-                    result[j, i] = Matrix[i, j];
-                }
-            }
-
-            Matrix2D TransMatrix2D = new Matrix2D("T", result.GetLength(0), result.GetLength(1));
-
-            return TransMatrix2D;
+            for (int l = 0; l < Matrix.GetLength(0); l++)
+                for (int c = 0; c < Matrix.GetLength(1); c++)
+                    result.Matrix[c, l] = Matrix[l, c];
+            return result;
         }
 
         public bool IsSquare()
@@ -61,55 +51,55 @@ namespace PIF1006_tp2
             // À compléter (2 pts)
             // Aura sans doute des méthodes suppl. privée à ajouter,
             // notamment de nature récursive. La matrice doit être carrée de prime à bord.
-            if(Matrix.GetLength(1) == 2)
-            {
+            if(Matrix.GetLength(0) < 3)
                 return (Matrix[0, 0] * Matrix[1, 1]) - (Matrix[0, 1] * Matrix[1, 0]);
-            } else
+            else
             {
                 double result = 0;
                 for(int c = 0; c < Matrix.GetLength(1); c++)
-                    result += (Matrix[0, c] * (Exclude(c).Determinant() * (c % 2 == 0 ? 1 : -1)));
+                    result += (Matrix[0, c] * (Exclude(0, c).Determinant() * (c % 2 == 0 ? 1 : -1)));
                 return result;
             }
-
         }
 
-        private Matrix2D Exclude(int column)
+        private Matrix2D Exclude(int line, int column)
         {
-            Matrix2D m = new Matrix2D("D", Matrix.GetLength(0) - 1, Matrix.GetLength(1) - 1);
-            for(int l = 1; l < Matrix.GetLength(0); l++)
+            Matrix2D result = new Matrix2D(Name, Matrix.GetLength(0) - 1, Matrix.GetLength(1) - 1);
+            int lin = 0;
+            for (int l = 0; l < Matrix.GetLength(0); l++)
             {
+                if (l == line) continue;
                 int col = 0;
                 for (int c = 0; c < Matrix.GetLength(1); c++)
                 {
-                    if (c != column)
-                    {
-                        m.Matrix[l - 1, col] = Matrix[l, c];
-                        col++;
-                    }
+                    if (c == column) continue;
+                    result.Matrix[lin, col] = Matrix[l, c];
+                    col++;
                 }
+                lin++;
             }
-            return m;
+            return result;
         }
 
         public Matrix2D Comatrix()
         {
             // À compléter (1 pt)
             // Doit retourner une matrice qui est la comatrice de celle de l'objet
-            Matrix2D comatrice = new Matrix2D("C", Matrix.GetLength(0), Matrix.GetLength(1));
-            Matrix2D result;
-
-            for (int i = 0; i < comatrice.Matrix.GetLength(0); i++)
+            Matrix2D result = new Matrix2D(Name, Matrix.GetLength(0), Matrix.GetLength(1));
+            if (Matrix.GetLength(0) < 3)
             {
-                for (int j = 0; j < comatrice.Matrix.GetLength(1); j++)
-                {
-                    result = this.SousMatrice(i, j);
-                    if ((i + j) % 2 == 0) { comatrice.Matrix[i, j] = result.Determinant(); }
-                    else { comatrice.Matrix[i, j] = -1 * result.Determinant(); }
-                }
+                result.Matrix[0, 0] = Matrix[1, 1];
+                result.Matrix[1, 0] = -Matrix[0, 1];
+                result.Matrix[0, 1] = -Matrix[1, 0];
+                result.Matrix[1, 1] = Matrix[0, 0];
+            } else
+            {
+                for (int l = 0; l < Matrix.GetLength(0); l++)
+                    for (int c = 0; c < Matrix.GetLength(1); c++)
+                        result.Matrix[l, c] = (Exclude(l, c).Determinant() * ((l + c) % 2 == 0 ? 1 : -1));
             }
 
-            return comatrice;
+            return result;
         }
 
         public Matrix2D Inverse()
@@ -118,31 +108,17 @@ namespace PIF1006_tp2
             // Doit retourner une matrice qui est l'inverse de celle de l'objet;
             // Si le déterminant est nul ou la matrice non carrée, on retourne null.
             double det = Determinant();
-            Matrix2D t_Comatrice = Comatrix();
-            t_Comatrice = t_Comatrice.Transpose();
-
-            Matrix2D Inverse = new Matrix2D("I", Matrix.GetLength(0), Matrix.GetLength(1));
-            //Inverse = t_Comatrice.Matrix * (1 / det);
-            return Inverse;
+            if (det == 0 || !IsSquare()) return null;
+            return Comatrix().Transpose().Multiply(1 / det);
         }
 
-        public Matrix2D SousMatrice(int ib, int jb)
+        public Matrix2D Multiply(double d)
         {
-            Matrix2D B = new Matrix2D("S",Matrix.GetLength(0) - 1, Matrix.GetLength(1) - 1);
-            int ir = 0, jr = 0;
-            for (int i = 0; i < B.Matrix.GetLength(0); i++)
-            {
-                for (int j = 0; j < B.Matrix.GetLength(1); j++)
-                {
-                    if (i != (ib) && j != (jb))
-                    {
-                        B.Matrix[ir, jr] = Matrix[i, j];
-                        if (jr < B.Matrix.GetLength(0) - 1) jr++;
-                        else { jr = 0; ir++; }
-                    }
-                }
-            }
-            return B;
+            Matrix2D result = new Matrix2D(Name, Matrix.GetLength(0), Matrix.GetLength(1));
+            for (int l = 0; l < Matrix.GetLength(0); l++)
+                for (int c = 0; c < Matrix.GetLength(1); c++)
+                    result.Matrix[l, c] = Matrix[l, c] * d;
+            return result;
         }
 
         public Matrix2D Clone()

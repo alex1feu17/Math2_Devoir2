@@ -33,7 +33,6 @@ namespace PIF1006_tp2
             // À compléter (1 pt)
             // Doit retourner une matrice X de même dimension que B avec les valeurs des inconnus
             double detA = A.Determinant();
-
             Matrix2D result = new Matrix2D("Cramer", B.Matrix.GetLength(0), 1);
             for (int c = 0; c < A.Matrix.GetLength(1); c++)
             {
@@ -49,7 +48,12 @@ namespace PIF1006_tp2
         {
             // À compléter (0.25 pt)
             // Doit retourner une matrice X de même dimension que B avec les valeurs des inconnus
-            return B.Clone();
+            Matrix2D invA = A.Inverse();
+            Matrix2D result = new Matrix2D("InverseMatrix", B.Matrix.GetLength(0), 1);
+            for (int l = 0; l < invA.Matrix.GetLength(0); l++)
+                for (int c = 0; c < invA.Matrix.GetLength(1); c++)
+                    result.Matrix[l, 0] += invA.Matrix[l, c] * B.Matrix[c, 0];
+            return result;
         }
 
         public Matrix2D SolveUsingGauss()
@@ -57,24 +61,23 @@ namespace PIF1006_tp2
             // À compléter (1 pts)
             // Doit retourner une matrice X de même dimension que B avec les valeurs des inconnus 
             Matrix2D A1 = A.Clone();
-            Matrix2D B1 = B.WithName("Gauss");
+            Matrix2D result = B.WithName("Gauss");
             for (int i = 0; i < A1.Matrix.GetLength(0); i++)
             {
                 for (int l = 0; l < A1.Matrix.GetLength(0); l++)
                 {
                     if (l == i) continue;
                     double d = A1.Matrix[l, i] / A1.Matrix[i, i];
-                    B1.Matrix[l, 0] = B1.Matrix[l, 0] - (d * B1.Matrix[i, 0]);
+                    result.Matrix[l, 0] = result.Matrix[l, 0] - (d * result.Matrix[i, 0]);
                     for (int c = i; c < A1.Matrix.GetLength(1); c++)
                         A1.Matrix[l, c] = A1.Matrix[l, c] - (d * A1.Matrix[i, c]);
                 }
 
-                B1.Matrix[i, 0] = B1.Matrix[i, 0] / A1.Matrix[i, i];
+                result.Matrix[i, 0] = result.Matrix[i, 0] / A1.Matrix[i, i];
                 for (int c = A1.Matrix.GetLength(1) - 1; c >= i; c--)
                     A1.Matrix[i, c] = A1.Matrix[i, c] / A1.Matrix[i, i];
             }
-
-            return B1;
+            return result;
         }
 
         public override string ToString()
